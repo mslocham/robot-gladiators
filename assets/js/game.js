@@ -53,7 +53,7 @@ var fight = function(enemy) {
         pickedEnemyObj.health = randomNumber(40, 60);
         fight(pickedEnemyObj);
 
-        if (playerInfo.health > 0 && i < enemyNames.length - 1) { 
+        if (playerInfo.health > 0 && i < enemyInfo.length - 1) { 
             var storeConfirm = window.confirm("The fight is over, visit the store before the next round.");
             shop();
         }
@@ -121,8 +121,19 @@ var fight = function(enemy) {
  
     }
 
+    var getPlayerName = function() {
+        var name = "";
+
+        while (name === "" || name === null) {
+            name = prompt("What is your robot's name?");
+        }
+        console.log("Your robot's name is " + name);
+        return name;
+    }
+
+
     var playerInfo = {
-        name: window.prompt("What is your name?"),
+        name: getPlayerName(),
         health: 100,
         attack: 10,
         money: 10,
@@ -149,8 +160,8 @@ var fight = function(enemy) {
             else {
             window.alert("You don't have enough money!");
             }
-    }
-    
+          }
+        }
     var enemyInfo = [
         {
             name: "Roborto",
@@ -165,6 +176,6 @@ var fight = function(enemy) {
             attack: randomNumber(10, 14)
         }
     ];
-
+    
 startGame();
 
